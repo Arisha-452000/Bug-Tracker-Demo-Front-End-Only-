@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BugSquash Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <i class="fas fa-bug"></i>
+                <h1>BugSquash Pro</h1>
+            </div>
+            <p>Squash those bugs before they multiply!</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <i class="fas fa-bug"></i>
+                    <span id="stats-total">0</span> Total
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="stats-open">0</span> Open
+                </div>
+            </div>
+        </header>
+
+        <div class="bug-form">
+            <div class="form-header">
+                <h2><i class="fas fa-bug"></i> Report a Bug</h2>
+                <button id="form-toggle" class="btn btn-icon">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <form id="bug-form" class="form-content">
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="bug-title" placeholder=" " required>
+                        <label for="bug-title">Bug Title</label>
+                        <span class="input-icon"><i class="fas fa-heading"></i></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <select id="bug-priority" required>
+                            <option value="">Select priority</option>
+                            <option value="low">Low Priority</option>
+                            <option value="medium" selected>Medium Priority</option>
+                            <option value="high">High Priority</option>
+                            <option value="critical">Critical Issue</option>
+                        </select>
+                        <label for="bug-priority">Priority Level</label>
+                        <span class="input-icon"><i class="fas fa-flag"></i></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-wrapper">
+                        <textarea id="bug-description" placeholder=" " required></textarea>
+                        <label for="bug-description">Bug Description</label>
+                        <span class="input-icon"><i class="fas fa-align-left"></i></span>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" id="clear-form" class="btn btn-secondary">
+                        <i class="fas fa-eraser"></i> Clear
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Submit Bug
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="bug-list">
+            <div class="list-header">
+                <h2><i class="fas fa-bug"></i> Reported Bugs</h2>
+                <div class="search-filter">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search" placeholder="Search bugs...">
+                    </div>
+                    <select id="filter" class="filter-select">
+                        <option value="all">All Bugs</option>
+                        <option value="open">Open</option>
+                        <option value="closed">Closed</option>
+                        <option value="low">Low Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="high">High Priority</option>
+                        <option value="critical">Critical</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="bug-list" class="bug-list-container">
+                <!-- Bugs will be dynamically inserted here -->
+            </div>
+            
+            <div class="list-footer">
+                <div id="pagination" class="pagination">
+                    <!-- Pagination buttons will be inserted here -->
+                </div>
+                <div class="items-per-page">
+                    <span>Show:</span>
+                    <select id="items-per-page">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                    <span id="pagination-info">Showing 0-0 of 0 bugs</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <div id="toast-content" class="toast-content">
+            <i class="fas fa-info-circle"></i>
+            <span>Notification message</span>
+        </div>
+        <button id="toast-close" class="toast-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <button id="floating-action-btn" class="floating-action-btn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
